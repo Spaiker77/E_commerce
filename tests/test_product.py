@@ -4,11 +4,17 @@ from src.product import Product
 
 @pytest.fixture
 def sample_product():
-    return Product("Test", "Desc", 100.0, 5)
+    return Product("Test Product", "Test Description", 100.0, 5)
+
+
+def test_product_initialization(sample_product):
+    assert sample_product.name == "Test Product"
+    assert sample_product.price == 100.0
+    assert sample_product.quantity == 5
 
 
 def test_product_str(sample_product):
-    assert str(sample_product) == "Test, 100.0 руб. Остаток: 5 шт."
+    assert str(sample_product) == "Test Product, 100.0 руб. Остаток: 5 шт."
 
 
 def test_product_add():
