@@ -2,7 +2,7 @@ from src.product import Product
 
 
 class LawnGrass(Product):
-    """Класс для газонной травы"""
+    """Класс газонной травы"""
 
     def __init__(
         self,
@@ -18,9 +18,3 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
-
-    def __repr__(self):
-        return (
-            f"LawnGrass({self.name}, {self.price}, {self.quantity}, "
-            f"{self.country}, {self.germination_period}, {self.color})"
-        )

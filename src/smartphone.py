@@ -2,7 +2,7 @@ from src.product import Product
 
 
 class Smartphone(Product):
-    """Класс для смартфонов"""
+    """Класс смартфонов"""
 
     def __init__(
         self,
@@ -20,9 +20,3 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
-
-    def __repr__(self):
-        return (
-            f"Smartphone({self.name}, {self.price}, {self.quantity}, "
-            f"{self.efficiency}, {self.model}, {self.memory}, {self.color})"
-        )
