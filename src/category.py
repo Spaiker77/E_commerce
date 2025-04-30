@@ -1,4 +1,4 @@
-from .product import Product
+from src.product import Product
 
 
 class Category:
@@ -24,13 +24,11 @@ class Category:
 
     def add_product(self, product):
         if not isinstance(product, Product):
-            raise TypeError("Можно добавлять только объекты Product и его наследников")
-
-        if product not in self.__products:
-            self.__products.append(product)
-            Category._all_products.add((product.name, product.price))
-            Category.product_count = len(Category._all_products)
+            raise TypeError("Можно добавлять только продукты")
+        self.__products.append(product)
+        Category._all_products.add((product.name, product.price))
+        Category.product_count = len(Category._all_products)
 
     def __str__(self) -> str:
-        total_quantity = sum(p.quantity for p in self.__products)
-        return f"{self.name}, количество продуктов: {total_quantity} шт."
+        total = sum(p.quantity for p in self.__products)
+        return f"{self.name}, количество продуктов: {total} шт."
