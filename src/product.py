@@ -1,20 +1,16 @@
-from src.base_product import BaseProduct
-from src.logging_mixin import LoggingMixin
+from src.exceptions import ZeroQuantityError
 
 
-class Product(LoggingMixin, BaseProduct):
-    """Класс продукта с миксином"""
+class Product:
+    """Класс товара"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        # Правильный порядок вызова super()
-        super().__init__(
-            name=name, description=description, price=price, quantity=quantity
-        )
+        if quantity <= 0:
+            raise ZeroQuantityError()
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
 
-    def __str__(self) -> str:
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
-
-    def __add__(self, other) -> float:
-        if type(self) != type(other):
-            raise TypeError("Нельзя складывать разные типы товаров")
-        return (self.price * self.quantity) + (other.price * other.quantity)
+    def __repr__(self):
+        return f"Product({self.name}, {self.price}, {self.quantity})"
